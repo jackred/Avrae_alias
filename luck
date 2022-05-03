@@ -1,0 +1,9 @@
+!alias luck <drac2>
+l_roll = vroll('1d20')
+title = f"'{name} make a Luck role'"
+f = []
+f.append(f"'Meta|{l_roll.full}'")
+footer = "'JackRed#0431 | 🍀 Luck Roll 🍀 '"
+thumb = "https://cdn.discordapp.com/attachments/511091132302622720/966284245062520882/unknown.png"
+return f"embed -title {title} -f {' -f '.join(f)} -thumb {thumb} -footer {footer}"
+</drac2>

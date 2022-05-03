@@ -1,0 +1,11 @@
+!alias wm <drac2>
+gvar, surge_roll = load_json(get_gvar('9274bf9a-f3d2-407e-9723-0a8901d04003')), vroll('1d100')
+surge = gvar[ceil(surge_roll.total/2)-1]
+title = f"'{name} make a Wild Magic role'"
+f = []
+f.append(f"'Meta|{surge_roll.full}'")
+f.append(f"'Effect|{surge.desc}'")
+footer = "'JackRed#0431 | Wild Magic'"
+thumb = image
+return f"embed -title {title} -f {' -f '.join(f)} -thumb {thumb} -footer {footer}"
+</drac2>
