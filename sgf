@@ -1,0 +1,19 @@
+<drac2>
+arg1=&ARGS&
+atk=vroll(f"1d20+{proficiencyBonus+dexterityMod}")
+mtp=1
+if atk.result.crit==1:
+    mtp=2
+up=int(arg1[0]) if len(arg1) >=1 else 0
+gr=int((level+1)/6)
+sr, gf1, gf2=vroll(f"{mtp*(up+2)}d8"), vroll(f"{mtp*gr}d8"), vroll(f"{gr}d8+{spell}")
+t=sr.total+gf1.total
+ti=f"'{name} casts Green-Flame Blade with Shadow Blade'"
+f=[]
+f.append(f"'Meta|**To Hit**: {atk}\n**Target 1**: {sr.dice} + {gf1.dice} = `{t}` (`{sr.total}` psychic, `{gf1.total}` fire)\n**Target 2**: {gf2} fire'")
+f.append("'Green-Flame Blade|You brandish the weapon used in the spell\\’s casting and make a melee attack with it against one creature within 5 feet of you. On a hit, the target suffers the weapon attack\\’s normal effects, and you can cause green fire to leap from the target to a different creature of your choice that you can see within 5 feet of it. The second creature takes fire damage equal to your spellcasting ability modifier.'")
+f.append("'Shadow Blade|You weave together threads of shadow to create a sword of solidified gloom in your hand. This magic sword lasts until the spell ends. It counts as a simple melee weapon with which you are proficient. It deals 2d8 psychic damage on a hit and has the finesse, light, and thrown properties (range 20/60). In addition, when you use the sword to attack a target that is in dim light or darkness, you make the attack roll with advantage.\n\nIf you drop the weapon or throw it, it dissipates at the end of the turn. Thereafter, while the spell persists, you can use a bonus action to cause the sword to reappear in your hand.'")
+th=image
+fo="'JackRed#0431 | Shadow Blade + Green-Flame Blade'"
+return f"embed -title {ti} -f {' -f '.join(f)} -thumb {th} -footer {fo}"
+</drac2>
