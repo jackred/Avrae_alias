@@ -1,0 +1,24 @@
+<drac2>
+arg1=&ARGS&
+up=int(arg1[0]) if len(arg1) >=1 else 0
+d1, d2, s=vroll('d20'), vroll('d20'), vroll(f"{up+1}d6")
+t=d1.total+d2.total+s.total
+cb_el=load_json(get_gvar('226a3794-4723-41a9-8051-654673641b81'))
+els=(cb_el[str(d1.total)], cb_el[str(d2.total)])
+if d1.total == d2.total:
+    el=els[0]
+    a=f"\n**Additional**: You can Chaos Bolt at level {3+up}"
+else:
+    el=" or ".join(els)
+    a=""
+ti=f"'{name} casts Kai\\'s Chaos Ball '"
+f=[]
+d1t=f'**{d1.total}**' if d1.total in [1,20] else d1.total
+d2t=f'**{d2.total}**' if d2.total in [1,20] else d2.total
+f.append(f"'Meta|**Damage**: 2d20 ({d2t},{d1t}) + {s.dice} = `{t}`\n**Element**: {el}{a}'")
+f.append("'Effect|You point your finger toward a point within range where a sphere of flickering light suddenly appears. The light on the sphere flashes very quickly before stopping on one colour, and the sphere collapses into itself, before exploding into a colour wave on a 20-foot radius.\n\nEach creature in range must make a Dexterity saving throw. Roll 2d20+1d6 damage. Choose of of the d20s. The number rolled on that die determines the attack\\'s damage type, as shown below. On a fail save, a target takes the entirety of the damage, or half on a successful one.\n\nIf you roll the same number on both d20s, the chaotic energy leaps to a target within range of the explosion. You make an attack roll for Chaos Bolt at the level the spell was casted to, which could cause the chaotic energy to leap again.\n\nOnly creature that has been affected by the Chaos Ball can be targeted by Chaos Bolt, and only once.'")
+f.append("'-|```markdown\n______________________\n d20  |   Damage Type\n1-11  |   Acid\n2-12  |   Fire\n3-13  |   Radiant\n4-14  |   Thunder\n5-15  |   Force\n6-16  |   Necrotic\n7-17  |   Lighting\n8-18  |   Psychic\n9-19  |   Cold\n10-20 |   Poison\n______________________```'")
+th=image
+fo="'JackRed#0431 | Chaos Ball'"
+return f"embed -title {ti} -f {' -f '.join(f)} -thumb {th} -footer {fo}"
+</drac2>
