@@ -6,14 +6,14 @@ if atk.result.crit==1:
     mtp=2
 up=int(arg1[0]) if len(arg1) >=1 else 0
 br=int((level+1)/6)
-sr, bm1, bm2=vroll(f"{mtp*(up+2)}d8"), vroll(f"{mtp*br}d8"), vroll(f"{1+br}d8")
+sr, bm1=vroll(f"{mtp*(up+2)}d8"), vroll(f"{mtp*br}d8")
 t=sr.total+bm1.total
 ti=f"'{name} casts Booming Blade with Shadow Blade'"
 f=[]
 if br==0:
-    f.append(f"'Meta|**To Hit**: {atk}\n**Damage**: {sr.total} psychic\n**On move**: {bm2} thunder'")
+    f.append(f"'Meta|**To Hit**: {atk}\n**Damage**: {sr.total} psychic'")
 else:
-    f.append(f"'Meta|**To Hit**: {atk}\n**Damage**: {sr.dice} + {bm1.dice} =  `{t}` (`{sr.total}` psychic, `{bm1.total}` thunder)\n**On move**: {bm2} thunder'")
+    f.append(f"'Meta|**To Hit**: {atk}\n**Damage**: {sr.dice} + {bm1.dice} =  `{t}` (`{sr.total}` psychic, `{bm1.total}` thunder)'")
 f.append("'Booming Blade|You brandish the weapon used in the spell\\’s casting and make a melee attack with it against one creature within 5 feet of you. On a hit, the target suffers the weapon attack\\’s normal effects and then becomes sheathed in booming energy until the start of your next turn. If the target willingly moves 5 feet or more before then, the target takes 1d8 thunder damage, and the spell ends.'")
 f.append("'Shadow Blade|You weave together threads of shadow to create a sword of solidified gloom in your hand. This magic sword lasts until the spell ends. It counts as a simple melee weapon with which you are proficient. It deals 2d8 psychic damage on a hit and has the finesse, light, and thrown properties (range 20/60). In addition, when you use the sword to attack a target that is in dim light or darkness, you make the attack roll with advantage.\n\nIf you drop the weapon or throw it, it dissipates at the end of the turn. Thereafter, while the spell persists, you can use a bonus action to cause the sword to reappear in your hand.'")
 th=image

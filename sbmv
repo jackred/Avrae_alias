@@ -1,0 +1,11 @@
+<drac2>
+br=int((level+1)/6)
+bm2=vroll(f"{1+br}d8")
+ti=f"'{name} rolled for Booming Blade damage'"
+f=[]
+f.append(f"'Meta|**On Move**: {bm2} thunder'")
+f.append("'Booming Blade|You brandish the weapon used in the spell\\’s casting and make a melee attack with it against one creature within 5 feet of you. On a hit, the target suffers the weapon attack\\’s normal effects and then becomes sheathed in booming energy until the start of your next turn. If the target willingly moves 5 feet or more before then, the target takes 1d8 thunder damage, and the spell ends.'")
+th=image
+fo="'JackRed#0431 | Booming Blade '"
+return f"embed -title {ti} -f {' -f '.join(f)} -thumb {th} -footer {fo}"
+</drac2>

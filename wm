@@ -1,4 +1,4 @@
-!alias wm <drac2>
+<drac2>
 gvar, surge_roll = load_json(get_gvar('9274bf9a-f3d2-407e-9723-0a8901d04003')), vroll('1d100')
 surge = gvar[ceil(surge_roll.total/2)-1]
 title = f"'{name} make a Wild Magic role'"
